@@ -30,11 +30,37 @@ This is the part worth internalising, because it generalises well beyond this pr
 - **Coherence is scored, surface area is not.** Judging rewards "a complete, coherent product
   experience," which three well-joined agents demonstrate better than seven thin ones.
 
-## Product principle: hands-off by default, hands-on by choice
+## Product principle: the tedium disappears, the control stays
 
-**The pipeline must produce a good result with zero human input.** Approval steps and the
-FCPXML export are *escape hatches for people who want them*, never required steps. If a user
-has to babysit it, the product has failed on its own terms.
+**Automate the tedious work. Keep the creative control.** The goal is not "no human input" —
+it is *no human drudgery*. A person should spend their time on the decisions they actually care
+about and none of their time on the work a machine does better.
+
+**What disappears** — the complicated, time-consuming parts:
+
+```text
+logging and reviewing source material to find the usable moments
+transcribing and syncing
+hunting for the clip that matches a line
+checking the licence on every asset
+timing captions, levelling audio, ducking music
+export settings, codecs, containers
+redoing all of the above when the script changes
+```
+
+**What stays with the person** — wherever they would want a say:
+
+```text
+the claim being made and the story that carries it
+which take, when it matters to them
+pacing and feel
+whether it goes out
+```
+
+Everything in the first list should be invisible. Everything in the second should be one
+gesture away, and never forced. A default run produces something good with nobody touching it;
+a person who *wants* control gets it immediately, at the point they care about, without
+inheriting the drudgery that used to come attached.
 
 That creates the hardest engineering requirement in this project: **quality without a human in
 the loop.** Two things make it achievable rather than aspirational.

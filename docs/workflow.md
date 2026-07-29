@@ -16,7 +16,10 @@
 8. The user watches the preview in the browser — or, if they want to, opens the FCPXML in Final
    Cut to finish it. Neither requires the other.
 
-**The default path requires no human input at any point.** Review and FCPXML are opt-in.
+**The default path requires no human input at any point** — but that is not the goal in itself.
+The goal is that the tedious work (logging, syncing, clip-hunting, licence checks, caption
+timing, audio levelling, export settings) is gone, while every decision a person would *want*
+to make stays one gesture away and is never forced on them.
 
 Both exports come from the same TimelineAST, so they never drift apart. Someone with no editor
 gets a watchable video; someone with an editor gets a real starting timeline. Neither is a
