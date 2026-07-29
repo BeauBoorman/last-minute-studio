@@ -1,0 +1,36 @@
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Generated media and temporary jobs
+tmp/
+temp/
+output/
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.png
+!docs/screenshots/.gitkeep
+!assets/.gitkeep
+
+# Logs and caches
+*.log
+.cache/
+coverage/
