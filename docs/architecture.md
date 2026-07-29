@@ -30,6 +30,54 @@ This is the part worth internalising, because it generalises well beyond this pr
 - **Coherence is scored, surface area is not.** Judging rewards "a complete, coherent product
   experience," which three well-joined agents demonstrate better than seven thin ones.
 
+## Product principle: hands-off by default, hands-on by choice
+
+**The pipeline must produce a good result with zero human input.** Approval steps and the
+FCPXML export are *escape hatches for people who want them*, never required steps. If a user
+has to babysit it, the product has failed on its own terms.
+
+That creates the hardest engineering requirement in this project: **quality without a human in
+the loop.** Two things make it achievable rather than aspirational.
+
+### 1. An automated quality gate (not an agent — a checkable contract)
+
+Before anything is exported, the cut is checked against measurable thresholds:
+
+```text
+duration        within target window
+captions        legible: contrast, safe-area, min on-screen dwell
+audio           narration peak/LUFS in range; music ducked under speech
+assets          no missing/expired/placeholder media
+coverage        every script line mapped to real source material
+claims          every stated fact traceable to repository evidence
+```
+
+Each is a **pass/fail check with a number**, so failures are specific and repairable — a stage
+can be re-run rather than the whole job. This is the mechanism that makes "hands-off" safe: the
+system knows when it produced something bad, instead of hoping a human notices.
+
+*(This is Timothy's Quality Review stage from the original design. It was dropped when the
+pipeline collapsed to three agents — restoring it as a deterministic gate is what makes the
+hands-off promise credible.)*
+
+### 2. Music and narration are generated, and that is not a contradiction
+
+Assembling real footage rather than generating imagery is the strategic bet. **Generated audio
+is not in tension with it** — working editors have always scored cuts with library or
+commissioned music. The "AI slop" risk lives in fabricated *imagery*, not in a soundtrack.
+
+So: **narration and music are generated, to a quality bar, with no manual step.**
+Google's **Lyria** models are the compliant route (Vertex AI, documented under the Gemini
+Enterprise Agent Platform — the platform the contest requires). Lyria 3 Pro produces structured
+compositions up to three minutes with real intro/verse/chorus structure, which is what makes an
+automatic score sound intentional rather than looped.
+
+The soundtrack is treated as a **tool call with a ducking plan derived from the narration
+timing**, not as an agent decision. Deterministic, testable, and hands-off.
+
+*Caveat worth tracking:* Lyria is in public preview. Any preview surface can change or
+rate-limit, so the assembly path needs a fallback that still ships a watchable cut.
+
 ## Core artifacts
 
 ```text
