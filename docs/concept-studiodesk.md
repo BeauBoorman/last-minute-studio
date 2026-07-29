@@ -3,6 +3,52 @@
 This is the design a week of research and three adversarial review passes converged on. It is
 written out in full so it can be argued with on the merits rather than accepted or ignored.
 
+## The goal
+
+**Agentic cinema production, for everyone.**
+
+Making something watchable currently costs a crew, expensive single-platform software, and
+years of craft. Most of that cost is *not* creative — it is logging footage, syncing, hunting
+for the right shot, timing captions, levelling audio, fighting export settings. That work is
+what keeps ordinary people out.
+
+Agents can absorb all of it. What they cannot supply — taste, the story, whether it is honest —
+is what people already have. So the split is: **the machine takes the labour, the person keeps
+the authorship.**
+
+Everything else in this document is downstream of that sentence. When a decision is unclear,
+the test is: *does this let more people make something, or fewer?*
+
+### What "everyone" commits us to
+
+These are not aspirations — each is a checkable constraint, and each one we fail narrows the
+audience:
+
+```text
+no paid software required to get value          (→ free Resolve, not paid Final Cut)
+no install required to start                    (→ browser first)
+no account or key required to try               (→ public demo path)
+no fast local machine required                  (→ work happens server-side)
+no film literacy required                       (→ never demand "b-roll" or "J-cut")
+no precise pointing required                    (→ voice-drivable, large targets)
+works with the material people actually have    (→ phone video, screenshots, a repo)
+cheap enough per video to not gate on money     (→ cost per run is a design constraint)
+```
+
+### Where this design currently contradicts the goal
+
+The pipeline assumes a **pre-indexed licensed clip catalog**. That is a professional
+assumption: ordinary people do not have one, and requiring it puts the product back behind the
+gate we are trying to remove.
+
+**The source material has to be whatever a person already has** — phone footage, screenshots,
+a screen recording, a repository — with free/CC stock as an optional supplement, not a
+prerequisite. The rights and licensing gate still matters (it is what keeps people out of
+trouble when they *do* pull in stock), but it must not become an entry requirement.
+
+This is a real inconsistency in the current spec, not a wording issue. Resolving it is a
+prerequisite to claiming the goal above.
+
 ## The pitch
 
 **A secure producer's assembly desk.** A multi-agent *editorial* system: ingest licensed
