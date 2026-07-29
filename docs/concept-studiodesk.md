@@ -80,3 +80,23 @@ plays to an actual editor on this team rather than around them.
 
 But it is a genuine fork, it is worth arguing about, and the argument should happen now rather
 than in week five.
+
+## The judge path (decided, not deferred)
+
+The contest requires a hosted project URL. A submission a judge cannot open scores zero
+regardless of what it does, so this is settled on day one rather than in the final week.
+
+**What opens in a browser:** a hosted page with a pre-loaded example project. It plays the
+**preview MP4** inline and shows the timeline the agents produced, with the rights report
+beside it.
+
+**What works without Final Cut:** everything a judge needs. Final Cut is an *export target for
+practitioners*, never a requirement for evaluation. The preview MP4 and the on-page timeline
+carry the whole story; the FCPXML is offered as a download to prove the export is real.
+
+**Credentials a judge needs:** none. A public demo mode with a prepared example runs
+end-to-end with no login, no key, and no install. Any account-gated feature is additive and
+clearly marked.
+
+**Verification:** this is checked from a cold browser — a clean profile, logged out, no local
+state — by someone who did not build it. That test is the gate, not a formality.

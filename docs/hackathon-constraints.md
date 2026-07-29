@@ -1,52 +1,70 @@
-# Agentic Cinema — hard constraints
+# Agentic Cinema — constraints
 
-Verified against the published rules. Any one of these is pass/fail, so they belong in the
-repo rather than in a plan document.
+Official rules: <https://agentic-cinema.devpost.com/rules>
+
+This file separates **contest requirements** (their rules — breaking one is pass/fail) from
+**our engineering guardrails** (our choices — sensible, but not imposed by the contest). The
+distinction matters: a rule is non-negotiable, a guardrail is a decision we can revisit.
 
 **Deadline:** 2026-09-07, 14:00 PDT.
 
-## Mandatory
+---
 
-- **Runtime AI must be Google Cloud (Gemini / Vertex) + the chosen partner only.**
-- The repo must **actually import and call** Google packages at runtime (`google-adk`,
-  `google-genai`) — proven in code, not name-dropped in a README.
-- Must integrate **a Partner Entity's MCP server** (see open questions — this one is unclear).
-- **Public, cloneable repo with a visible license**, secret-scanned before the first commit.
-- **IBM track:** use IBM Bob in the development process from commit #1.
+## A. Contest requirements — quoted from the rules
 
-## Prohibited
+**Required stack.** Build *"a functional, production-ready AI agent or multi-agent network —
+powered by Gemini and Google Cloud Agent Builder"*, and integrate *"a Partner Entity's MCP
+server."*
 
+**Prohibited AI.**
 > "No other AI models, agent frameworks, or AI APIs are permitted, regardless of vendor —
 > this includes but is not limited to AWS, Microsoft, OpenAI, and Anthropic AI tools."
 
 Practical consequences for this repo:
+- No non-Google TTS or music generation in the submitted runtime — narration and any audio
+  generation must call Google Cloud services.
+- No OpenAI / Anthropic / local-GPU inference in the judged path. Local hardware is fine for
+  internal testing, never in the submitted runtime.
+- Whether third-party SaaS that uses AI *internally* counts is unresolved — see
+  [open questions](open-questions-organizers.md).
 
-- **No non-Google TTS or music generation** in the submitted runtime. A "Voice Agent" or
-  "Music Agent" must call Google Cloud services, not ElevenLabs or similar.
-- No OpenAI / Anthropic / local-GPU inference in the submitted runtime. Local hardware is
-  fine for *internal testing*, never in the judged path.
-- Third-party SaaS that uses AI internally is an open question (see below).
-
-## Newly-created-project rule
-
+**Newly created project.**
 > "Projects must be newly created by the entrant during the Contest Period. The Project must
-> be Your original creation not a modification or extension of Your or anyone else's
-> existing work."
+> be Your original creation not a modification or extension of Your or anyone else's existing
+> work."
 
-`calesthio/OpenMontage` is **AGPL-3.0** (verified first-party via the GitHub API and the raw
-LICENSE file). It is treated as **inspiration only** — not forked, not vendored. Two reasons:
-the new-project rule above, and AGPL copyleft, which would force this repo off MIT and
-require any hosted service to publish its full source.
+**Submission.** A hosted project URL, a 3-minute demo video, and a **public open-source
+repository with a visible license file**. (This repo is public and MIT — requirement met.)
 
-## Suggested guardrail
+**Eligibility.** Legal age of majority; 23 excluded countries/territories.
 
-Pin the model in code with a fail-fast allowlist, enforced at import time so a
-misconfiguration cannot reach the judged runtime:
+---
+
+## B. Our engineering guardrails — our decisions, not contest rules
+
+These are ours. They are here because they are good practice, not because the contest demands
+them. Argue with any of them.
+
+**Model pinning.** Pin the model in code with a fail-fast allowlist enforced at import time:
 
 ```python
 # src/config/model_whitelist.py
 ALLOWED_MODELS = {"gemini-2.5-flash-lite"}   # sys.exit(2) on anything else
 ```
 
-A local constant checked at import needs no network call at boot, so an outage or an offline
-test can never crash startup — and no non-compliant model can be reached by accident.
+*Why:* the prohibited-AI rule above is pass/fail, and the cheapest way to guarantee compliance
+is to make a non-compliant model ID impossible to reach at runtime. A local constant checked at
+import needs no network call at boot, so an outage can never crash startup.
+
+**Secret scanning.** Run `gitleaks` in CI and as a pre-commit hook. *Not a contest requirement.*
+It is here because this is a public repo and a leaked key is unrecoverable once pushed. The
+earlier draft of this file said "before the first commit," which is no longer actionable for an
+existing repository — the practical version is: **scan every commit from now on, and scan the
+existing history once** to confirm nothing is already exposed.
+
+**Dependency posture.** `calesthio/OpenMontage` is **AGPL-3.0** (verified via the GitHub API and
+its raw LICENSE file). We treat it as **inspiration only** — not forked, not vendored. Two
+reasons: the newly-created-project rule above, and AGPL copyleft, which would force this repo
+off MIT and require any hosted deployment to publish its full source. Whether it could be used
+as a plain licensed dependency is an [open question](open-questions-organizers.md) for the
+organizers, not something to assume either way.

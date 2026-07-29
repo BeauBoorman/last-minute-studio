@@ -2,7 +2,9 @@
 
 > Turn your project into a pitch-ready demo before the deadline.
 
-Last Minute Studio is an agentic video-production pipeline for hackathon teams and open-source developers. Give it a repository, screenshots, and optional branding; it researches the project, finds the story, plans the scenes, creates narration, and assembles a submission-ready demo video.
+Last Minute Studio is an agentic **editorial assembly** pipeline for hackathon teams and open-source developers. Give it a brief and your source material — repository evidence, screen recordings, screenshots, licensed clips — and it indexes that material, matches it to your story, clears the rights, and assembles a cut. You get a **preview video** you can watch immediately and an **FCPXML** timeline an editor can finish in Final Cut.
+
+It assembles real evidence rather than generating imagery. See [the concept doc](docs/concept-studiodesk.md) for why that bet was made.
 
 ## Why Last Minute Studio?
 
@@ -12,27 +14,25 @@ Great projects often lose attention because explaining them takes longer than bu
 
 ```mermaid
 flowchart TD
-    A[Repository Intake] --> B[Repository Analyst]
-    B --> C[Story Planner]
-    C --> D[Storyboard Agent]
-    D --> E[Voice Agent]
-    D --> F[Music Agent]
-    E --> G[Editor Agent]
-    F --> G
-    G --> H[Quality Review]
-    H --> I[Submission-ready MP4]
+    A[Source Material] --> B[Index: transcripts, shots, repo evidence]
+    B --> C[Ingest & Match Agent]
+    C --> D[Timeline AST]
+    D --> E[Compliance Agent<br/>rights + licensing gate]
+    E --> F[Assembly Agent]
+    F --> G[FCPXML v1.10]
+    F --> H[Preview MP4]
 ```
 
 The pipeline can:
 
-- clone and inspect a GitHub repository
+- clone and inspect a GitHub repository, and index screen recordings and clips
 - understand the README, stack, releases, commits, and assets
 - identify the product’s strongest user-facing features
 - ask for missing screenshots or branding
-- write a concise narrative and scene-by-scene storyboard
-- generate voiceover and background music
-- assemble scenes, captions, and transitions
-- review the result and export an MP4
+- write a concise narrative and match each line to real source material
+- clear every asset for rights and licensing before it is used
+- assemble a timeline with captions, transitions, and Google-generated narration
+- export both an FCPXML timeline and a preview MP4
 
 ## Project status
 
@@ -59,13 +59,13 @@ The implementation is being built in stages. For now, explore the design docs:
 
 ## Roadmap
 
-- [ ] Repository intake and project fact extraction
-- [ ] Narrative and storyboard generation
-- [ ] Screenshot and screen-recording scene support
-- [ ] Voiceover generation
-- [ ] Timeline assembly and MP4 export
-- [ ] Quality review with human approval checkpoints
-- [ ] Hosted demo for hackathon submissions
+- [ ] Source-material intake and indexing (repo evidence, recordings, transcripts)
+- [ ] Ingest & Match agent → Timeline AST
+- [ ] Compliance agent: rights and licensing gate
+- [ ] Assembly agent: FCPXML v1.10 export
+- [ ] FFmpeg preview MP4 from the same AST
+- [ ] Human approval checkpoint before assembly
+- [ ] Hosted demo with a no-login judge path
 
 ## Contributing
 

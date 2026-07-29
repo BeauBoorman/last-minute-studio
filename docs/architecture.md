@@ -4,26 +4,46 @@ Last Minute Studio is designed as a sequence of small, inspectable agents connec
 
 ## Pipeline
 
-1. **Repository Intake Agent** accepts a GitHub URL, optional screenshots, and branding preferences.
-2. **Repository Analyst** extracts project facts, user-facing features, setup steps, and evidence from the repository.
-3. **Story Planner** turns those facts into a single product claim and a short narrative.
-4. **Storyboard Agent** maps the narrative to scenes, assets, on-screen text, and timing.
-5. **Voice Agent** generates narration aligned to the scene timings.
-6. **Music Agent** selects or generates a background track and ducking plan.
-7. **Editor Agent** renders the timeline with footage, captions, voice, and music.
-8. **Quality Review Agent** checks duration, legibility, audio levels, missing assets, and narrative coherence.
+> **Direction change (2026-07-29).** This project is an *editorial assembly* system, not an
+> AI-video generator. See [`concept-studiodesk.md`](concept-studiodesk.md) for the reasoning.
+> The seven-stage generative pipeline previously described here is superseded.
+
+**Three agents, plus deterministic tools.**
+
+1. **Ingest & Match Agent** — script/brief + an indexed catalog of source material
+   (repo evidence, screen recordings, licensed clips, transcripts) → a **Timeline AST**.
+2. **Compliance Agent** — rights, licensing and policy gate over every asset before it is used.
+3. **Assembly Agent** — Timeline AST → **FCPXML v1.10** *and* a local **FFmpeg preview MP4**.
+
+Everything else in the pipeline is a **tool**, not an agent: repository scraping, transcript
+indexing, thumbnailing, FFmpeg calls, FCPXML serialisation.
+
+### Why three, and why tools for the rest
+
+This is the part worth internalising, because it generalises well beyond this project:
+
+- **Agents are for judgement; tools are for work.** If a step has one correct answer given its
+  input — serialise this AST to FCPXML, extract this frame — it must be a tool. Tools are
+  deterministic, unit-testable, cheap, and cannot hallucinate. Every step you promote to an
+  agent is a step that can invent something.
+- **Cost scales with agent count**, and our credit budget is capped at $100 with no guarantee.
+- **Coherence is scored, surface area is not.** Judging rewards "a complete, coherent product
+  experience," which three well-joined agents demonstrate better than seven thin ones.
 
 ## Core artifacts
 
 ```text
-ProjectBrief   repository facts and selected product value proposition
-Script         narration, captions, and timing targets
-Storyboard     ordered scenes with asset requirements
-Timeline       render-ready media, transitions, and audio mix
-ReviewReport   automated checks plus human approval status
+SourceCatalog  indexed material: clips, screen recordings, transcripts, repo evidence
+Brief          the claim being made and the story that carries it
+TimelineAST    ordered, typed edit decisions — the single source of truth for a cut
+RightsReport   per-asset licence status and clearance decisions
+Exports        FCPXML v1.10 + FFmpeg preview MP4
 ```
 
-The first version should keep these artifacts as JSON so each agent can be tested independently and jobs can resume after failures.
+Keeping these as JSON means each stage is independently testable and a job can resume after a
+failure instead of restarting. The **TimelineAST is the important one** — because the edit is
+data rather than a rendered file, the same cut can be exported to an editor *or* previewed as
+video without re-running anything upstream.
 
 ## Design principles
 
@@ -31,3 +51,7 @@ The first version should keep these artifacts as JSON so each agent can be teste
 - Human approval at high-leverage points: approve the project brief and storyboard before expensive rendering.
 - Provider-agnostic media adapters: voice, music, and rendering providers should be replaceable.
 - Deterministic reruns: preserve inputs, prompt versions, and provider settings for every job.
+
+> The design principles above predate the direction change and were kept
+> deliberately — they hold under either product, and they match what our teardown of
+> OpenMontage identified as its strongest ideas.

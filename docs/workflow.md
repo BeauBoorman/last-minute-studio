@@ -2,15 +2,20 @@
 
 ## Happy path
 
-1. The user pastes a public GitHub URL.
-2. Last Minute Studio scans the repository and presents a short project brief.
-3. The user confirms the strongest story and adds screenshots or a logo if needed.
-4. Last Minute Studio generates a 60–90 second script and storyboard.
-5. The user approves or edits the storyboard.
-6. Agents generate narration, music, and any missing visual treatments.
-7. The editor assembles a preview.
-8. Quality review flags issues such as unreadable captions or unsupported claims.
-9. The user exports the final MP4.
+> Updated 2026-07-29 for the editorial-assembly direction.
+
+1. The user supplies a **brief or script** and points at source material — a repository, screen
+   recordings, screenshots, or a licensed clip catalog.
+2. Tools index that material: transcripts, shot boundaries, repo evidence, thumbnails.
+3. **Ingest & Match** proposes a timeline: which piece of source material carries which line.
+4. The user reviews the proposed cut — *this is the cheap approval point, before any render*.
+5. **Compliance** clears every asset for rights and licensing, and flags anything unusable.
+6. **Assembly** emits an **FCPXML** for a human editor *and* a **preview MP4** for everyone else.
+7. The user watches the preview in the browser, or opens the FCPXML in Final Cut to finish it.
+
+Both exports come from the same TimelineAST, so they never drift apart. Someone with no editor
+gets a watchable video; someone with an editor gets a real starting timeline. Neither is a
+second-class path.
 
 ## Failure and recovery
 
