@@ -3,9 +3,9 @@
 ## Happy path
 
 1. The user pastes a public GitHub URL.
-2. RepoReel scans the repository and presents a short project brief.
+2. Last Minute Studio scans the repository and presents a short project brief.
 3. The user confirms the strongest story and adds screenshots or a logo if needed.
-4. RepoReel generates a 60–90 second script and storyboard.
+4. Last Minute Studio generates a 60–90 second script and storyboard.
 5. The user approves or edits the storyboard.
 6. Agents generate narration, music, and any missing visual treatments.
 7. The editor assembles a preview.

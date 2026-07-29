@@ -1,12 +1,12 @@
-# RepoReel
+# Last Minute Studio
 
-> Turn a GitHub repository into a polished 60–90 second product demo.
+> Turn your project into a pitch-ready demo before the deadline.
 
-RepoReel is an agentic video-production pipeline for hackathon teams and open-source developers. Give it a repository, screenshots, and optional branding; it researches the project, finds the story, plans the scenes, creates narration, and assembles a submission-ready demo video.
+Last Minute Studio is an agentic video-production pipeline for hackathon teams and open-source developers. Give it a repository, screenshots, and optional branding; it researches the project, finds the story, plans the scenes, creates narration, and assembles a submission-ready demo video.
 
-## Why RepoReel?
+## Why Last Minute Studio?
 
-Great projects often lose attention because explaining them takes longer than building them. RepoReel turns the evidence already living in a repository into a concise, cinematic product story.
+Great projects often lose attention because explaining them takes longer than building them. Last Minute Studio turns the evidence already living in a repository into a concise, cinematic product story.
 
 ## The workflow
 
@@ -36,7 +36,7 @@ The pipeline can:
 
 ## Project status
 
-RepoReel is an early-stage hackathon prototype. The first milestone is a narrow, reliable path from a public GitHub URL to a storyboard and rendered demo video.
+Last Minute Studio is an early-stage hackathon prototype. The first milestone is a narrow, reliable path from a public GitHub URL to a storyboard and rendered demo video.
 
 ## Repository layout
 

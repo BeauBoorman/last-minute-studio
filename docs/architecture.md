@@ -1,6 +1,6 @@
 # Architecture
 
-RepoReel is designed as a sequence of small, inspectable agents connected by explicit artifacts. Each stage should be retryable and should leave behind enough structured output for a human to review or resume a job.
+Last Minute Studio is designed as a sequence of small, inspectable agents connected by explicit artifacts. Each stage should be retryable and should leave behind enough structured output for a human to review or resume a job.
 
 ## Pipeline
 
