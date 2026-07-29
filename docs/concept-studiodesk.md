@@ -100,3 +100,41 @@ clearly marked.
 
 **Verification:** this is checked from a cold browser — a clean profile, logged out, no local
 state — by someone who did not build it. That test is the gate, not a formality.
+
+## The editor path must be simple — nobody is forced into professional software
+
+The point of this is to make something that genuinely helps people, so **owning an expensive
+editor cannot be the price of getting value.** Three tiers, and each is complete on its own:
+
+**Tier 1 — watch it.** The preview MP4 plays in the browser. No install, no account, no editor.
+This is the whole product for most people, and it must be good enough to stop here.
+
+**Tier 2 — change it, in the browser.** Reorder scenes, trim, swap a clip, re-record a line.
+No NLE, no download, works on any device. Because the edit is a **TimelineAST** rather than a
+rendered file, a light web surface can manipulate it and re-export in seconds.
+
+This tier should be **drivable by voice**. Someone should be able to say *"make scene three
+shorter"* or *"swap that clip"* without precise pointing or dragging. That is a real
+accessibility win — fine pointer control and small drag targets exclude people, and an editing
+timeline is one of the worst offenders in software.
+
+**Tier 3 — finish it properly.** Export to a real NLE for anyone who wants to. **This tier must
+not require a paid, single-platform application.**
+
+### Export format — a correction to the plan
+
+The plan specifies **FCPXML v1.10**. That appears to be the wrong target:
+
+- FCPXML **1.10+** produces `.fcpxmld` *bundles* (a directory), while DaVinci Resolve expects a
+  flat `.fcpxml` file and imports **1.9** reliably.
+- Resolve is **free** and runs on macOS, Windows and Linux. Final Cut is paid and Mac-only.
+
+Targeting 1.10 therefore restricts the editor path to people who bought Final Cut. Targeting
+**1.9** — or emitting both — makes the same export work in free software on any platform, at
+effectively no extra cost.
+
+**Status: unverified.** This comes from documentation about older Resolve releases; current
+versions may have changed. It should be settled first-party by the FCPXML round-trip test,
+which is already the one unexercised step in the plan. **That test should round-trip against
+free DaVinci Resolve as well as Final Cut** — if it only ever passes on Final Cut, the editor
+path is narrower than we think and nobody will notice until someone without a Mac tries it.
