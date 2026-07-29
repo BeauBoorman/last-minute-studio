@@ -64,6 +64,29 @@ equivalent Google services throughout.
 coding assistant used to write source code — or only to what the submitted application invokes
 at runtime?
 
+## Q4 — Are Google Cloud credits granted per participant, per team, or per submission?
+
+> The rules state entrants may request *"$100 in Google Cloud credits by completing this form
+> by August 31st, 2026 11:59 PM PST"*, that provision is *"not guaranteed and at Google's
+> discretion"*, and that entrants are *"responsible for any and all fees accrued... [in excess
+> of] the $100 credit amount."*
+
+The rules also allow an individual to *"join more than one team... with a unique and
+substantially different Submission."*
+
+Those two together leave a gap we cannot resolve from the published text:
+
+1. Is the $100 granted **per individual participant**, **per team**, or **per submission**?
+2. If a participant is on two teams with two distinct submissions, do they request once or
+   once per submission?
+3. Does each team member request separately, so a team's usable total scales with headcount?
+
+This determines whether a project has $100 or a fraction of it to work with, which changes what
+is affordable to build. Asking early because the request form closes **August 31**, well before
+the submission deadline.
+
+---
+
 ---
 
 ## What each answer changes
@@ -76,6 +99,8 @@ at runtime?
 | Q2 — a real MCP server is required | New build item, must be scheduled immediately |
 | Q3a — SaaS-with-AI disallowed | All TTS/editing routes to Google Cloud equivalents |
 | Q3b — build-time tooling restricted | The agent build fleet itself has to change |
+| Q4 — credits are per submission | Each project is funded independently; plan normally |
+| Q4 — credits are per participant | A person on two teams splits one allocation; budget halves |
 
 **Until Q1 and Q2 return, do not commit to an architecture that assumes either answer.**
 
